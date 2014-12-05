@@ -29,7 +29,7 @@ public class lab5_10 {
 		        double right = Double.parseDouble(tokens.get(i));
 		        outcome.set(outcome.size() - 1, Double.toString(left * right));  //replace last one
 		    } 
-		    else if (tokens.get(i).equals("/")) {  //evaluate * first
+		    else if (tokens.get(i).equals("/")) {  //evaluate / first
 		        double left = Double.parseDouble(outcome.get(outcome.size() - 1)); 
 		        ++i;   //move to the next
 		        double right = Double.parseDouble(tokens.get(i));
@@ -40,25 +40,27 @@ public class lab5_10 {
 		    }
 		    ++i;    //move to the next
 		}
-		ArrayList<String> result = new ArrayList<String>();
-		int j = 0;
-		while(j < outcome.size()) {
-		    if (outcome.get(j).equals("+")) {  //evaluate * first
-		        double left = Double.parseDouble(result.get(result.size() - 1)); 
+		tokens=outcome;
+		outcome = new ArrayList<String>();
+		i = 0;
+		while(i < tokens.size()) {
+		    if (tokens.get(i).equals("+")) {  //evaluate + 
+		        double left = Double.parseDouble(outcome.get(outcome.size() - 1)); 
 		        ++i;   //move to the next
-		        double right = Double.parseDouble(outcome.get(j));
-		        result.set(result.size() - 1, Double.toString(left + right));  //replace last one
+		        double right = Double.parseDouble(tokens.get(i));
+		        outcome.set(outcome.size() - 1, Double.toString(left + right));  //replace last one
+		    } 
+		    else if (tokens.get(i).equals("-")) {  //evaluate / first
+		        double left = Double.parseDouble(outcome.get(outcome.size() - 1)); 
+		        ++i;   //move to the next
+		        double right = Double.parseDouble(tokens.get(i));
+		        outcome.set(outcome.size() - 1, Double.toString(left - right));  //replace last one
 		    }
-		    else if (outcome.get(j).equals("-")) {  //evaluate * first
-		        double left = Double.parseDouble(result.get(result.size() - 1)); 
-		        ++i;   //move to the next
-		        double right = Double.parseDouble(outcome.get(j));
-		        result.set(result.size() - 1, Double.toString(left - right));  //replace last one
-		    }else {
-		        result.add(outcome.get(j));
+		    else {
+		        outcome.add(tokens.get(i));
 		    }
 		    ++i;    //move to the next
 		}
-		return Double.parseDouble(result.get(0));
-	}	
+		return Double.parseDouble( outcome.get(0));	
+	}
 }
