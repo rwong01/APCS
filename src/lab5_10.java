@@ -50,7 +50,7 @@ public class lab5_10 {
 		        double right = Double.parseDouble(tokens.get(i));
 		        outcome.set(outcome.size() - 1, Double.toString(left + right));  //replace last one
 		    } 
-		    else if (tokens.get(i).equals("-")) {  //evaluate / first
+		    else if (tokens.get(i).equals("-")) {  //evaluate - first
 		        double left = Double.parseDouble(outcome.get(outcome.size() - 1)); 
 		        ++i;   //move to the next
 		        double right = Double.parseDouble(tokens.get(i));
